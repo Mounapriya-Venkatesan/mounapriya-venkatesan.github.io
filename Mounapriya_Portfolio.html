@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mounapriya Venkatesan — Aerospace Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:        #F7F5F0;
+  --surface:   #FFFFFF;
+  --card:      #FFFFFF;
+  --border:    #E2DDD6;
+  --border2:   #C8C0B4;
+  --ink:       #1A1714;
+  --ink2:      #4A4540;
+  --muted:     #847C74;
+  --accent:    #1B4FD8;   /* deep blue */
+  --accent2:   #0E7C5B;   /* forest green */
+  --accent3:   #B84B10;   /* burnt orange */
+  --accent4:   #6B3FA0;   /* violet */
+  --accentbg:  #EEF2FC;
+  --accent2bg: #EAF5F0;
+  --accent3bg: #FBF0EA;
+  --accent4bg: #F3EEF9;
+  --rule:      #D8D2C8;
+  --fh:        'DM Serif Display', Georgia, serif;
+  --fb:        'DM Sans', system-ui, sans-serif;
+  --fm:        'DM Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:15px;line-height:1.7;}
+
+/* ── NAV ──────────────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;
+    background:rgba(247,245,240,0.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);padding:0 6vw;}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;
+           justify-content:space-between;height:54px;}
+.nav-logo{font-family:var(--fm);font-size:12px;color:var(--accent);letter-spacing:0.06em;font-weight:500;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;font-weight:500;
+             letter-spacing:0.02em;transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+
+/* ── SHARED LAYOUT ────────────────────────────────────────────────────── */
+.wrap{max-width:1120px;margin:0 auto;padding:0 6vw;}
+.sec-eyebrow{font-family:var(--fm);font-size:11px;color:var(--muted);
+             letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:var(--fh);font-size:clamp(30px,4vw,46px);color:var(--ink);
+           margin-bottom:52px;line-height:1.15;}
+hr.rule{border:none;border-top:1px solid var(--rule);margin:0;}
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+#hero{padding:120px 0 80px;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.hero-kicker{font-family:var(--fm);font-size:11px;color:var(--accent2);
+             letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px;}
+.hero-name{font-family:var(--fh);font-size:clamp(42px,5.5vw,68px);
+           line-height:1.03;color:var(--ink);margin-bottom:6px;}
+.hero-name em{font-style:italic;color:var(--accent);}
+.hero-role{font-family:var(--fb);font-size:16px;font-weight:300;color:var(--muted);
+           margin-bottom:30px;line-height:1.5;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:32px;}
+.hpill{font-family:var(--fm);font-size:10.5px;padding:4px 11px;
+       border:1px solid var(--border2);border-radius:20px;color:var(--ink2);
+       background:var(--surface);}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-fill{font-family:var(--fb);font-size:13px;font-weight:600;
+          padding:10px 22px;background:var(--accent);color:#fff;
+          border-radius:7px;text-decoration:none;transition:opacity .2s;}
+.btn-fill:hover{opacity:.85;}
+.btn-out{font-family:var(--fb);font-size:13px;font-weight:500;
+         padding:10px 22px;border:1.5px solid var(--border2);color:var(--ink2);
+         border-radius:7px;text-decoration:none;transition:border-color .2s,color .2s;}
+.btn-out:hover{border-color:var(--accent);color:var(--accent);}
+
+/* hero right — stat cards */
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.hstat{background:var(--surface);border:1px solid var(--border);
+       border-radius:12px;padding:18px 20px;}
+.hstat.wide{grid-column:span 2;}
+.hstat-n{font-family:var(--fh);font-size:30px;color:var(--ink);line-height:1;}
+.hstat-l{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.hstat-accent{color:var(--accent);}
+.hstat-green{color:var(--accent2);}
+.hstat-orange{color:var(--accent3);}
+
+/* ── FILTER BAR ───────────────────────────────────────────────────────── */
+#projects{padding:80px 0 60px;}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:44px;}
+.fbtn{font-family:var(--fm);font-size:11px;padding:6px 16px;border-radius:20px;
+      border:1.5px solid var(--border2);background:var(--surface);color:var(--muted);
+      cursor:pointer;transition:all .2s;letter-spacing:0.04em;}
+.fbtn.active,.fbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* ── PROJECT CARDS ────────────────────────────────────────────────────── */
+.projects-list{display:flex;flex-direction:column;gap:20px;}
+.pcard{background:var(--surface);border:1px solid var(--border);
+       border-radius:16px;padding:32px 36px;
+       display:grid;grid-template-columns:1fr 220px;gap:40px;
+       align-items:start;transition:box-shadow .2s,border-color .2s;
+       position:relative;overflow:hidden;}
+.pcard:hover{box-shadow:0 4px 24px rgba(0,0,0,0.07);border-color:var(--border2);}
+.pcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;}
+.pcard.gnc::before{background:var(--accent);}
+.pcard.prop::before{background:var(--accent3);}
+.pcard.ai::before{background:var(--accent2);}
+.pcard.adcs::before{background:var(--accent4);}
+.pcard.hidden{display:none;}
+
+.p-eyebrow{font-family:var(--fm);font-size:10px;color:var(--muted);
+           letter-spacing:0.14em;text-transform:uppercase;margin-bottom:9px;}
+.p-title{font-family:var(--fh);font-size:20px;color:var(--ink);
+         margin-bottom:6px;line-height:1.25;}
+.p-sub{font-size:12.5px;color:var(--muted);margin-bottom:16px;}
+.p-sfpl{display:inline-block;font-family:var(--fm);font-size:10px;
+        padding:3px 10px;border-radius:20px;margin-bottom:14px;
+        background:var(--accentbg);border:1px solid #B8C9F4;color:var(--accent);
+        letter-spacing:.05em;}
+.p-nasa{background:var(--accent2bg);border-color:#9FCCBE;color:var(--accent2);}
+.p-desc{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:16px;}
+.p-bullets{list-style:none;margin-bottom:20px;}
+.p-bullets li{font-size:13.5px;color:var(--ink2);padding:4px 0 4px 20px;
+              position:relative;line-height:1.6;}
+.p-bullets li::before{content:"→";position:absolute;left:0;
+                       color:var(--accent);font-family:var(--fm);font-size:12px;}
+.p-bullets.green li::before{color:var(--accent2);}
+.p-bullets.orange li::before{color:var(--accent3);}
+.p-bullets.violet li::before{color:var(--accent4);}
+.p-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.ptag{font-family:var(--fm);font-size:10px;padding:3px 9px;border-radius:4px;letter-spacing:.04em;}
+.ptag.b{background:var(--accentbg);color:var(--accent);}
+.ptag.g{background:var(--accent2bg);color:var(--accent2);}
+.ptag.o{background:var(--accent3bg);color:var(--accent3);}
+.ptag.v{background:var(--accent4bg);color:var(--accent4);}
+
+/* right stats column */
+.p-stats{display:flex;flex-direction:column;gap:12px;}
+.sbox{background:var(--bg);border:1px solid var(--border);
+      border-radius:10px;padding:14px 16px;}
+.sbox-n{font-family:var(--fh);font-size:26px;line-height:1;}
+.sbox-l{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;}
+.sbox-n.b{color:var(--accent);}
+.sbox-n.g{color:var(--accent2);}
+.sbox-n.o{color:var(--accent3);}
+.sbox-n.v{color:var(--accent4);}
+
+/* ── SKILLS ───────────────────────────────────────────────────────────── */
+#skills{padding:80px 0;background:var(--surface);
+        border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;}
+.sg{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.sg-icon{font-size:22px;margin-bottom:10px;}
+.sg-title{font-family:var(--fb);font-size:13px;font-weight:600;
+          color:var(--ink);margin-bottom:10px;}
+.sg-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{font-family:var(--fm);font-size:10px;color:var(--ink2);
+      padding:3px 8px;border:1px solid var(--border2);border-radius:4px;
+      background:var(--surface);}
+
+/* ── EXPERIENCE ───────────────────────────────────────────────────────── */
+#experience{padding:80px 0;}
+.exp-card{background:var(--surface);border:1px solid var(--border);
+          border-radius:12px;padding:26px 30px;margin-bottom:16px;
+          display:grid;grid-template-columns:1fr auto;gap:20px;}
+.exp-role{font-family:var(--fb);font-size:16px;font-weight:600;color:var(--ink);}
+.exp-org{font-size:13px;color:var(--accent);margin:3px 0 12px;}
+.exp-li{list-style:none;}
+.exp-li li{font-size:13.5px;color:var(--ink2);padding:3px 0 3px 18px;
+           position:relative;line-height:1.6;}
+.exp-li li::before{content:"·";position:absolute;left:0;color:var(--accent2);}
+.exp-date{font-family:var(--fm);font-size:11px;color:var(--muted);
+          text-align:right;white-space:nowrap;}
+
+/* ── EDUCATION ────────────────────────────────────────────────────────── */
+#education{padding:72px 0;background:var(--surface);
+           border-top:1px solid var(--border);}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.edu-card{background:var(--bg);border:1px solid var(--border);
+          border-radius:12px;padding:24px;border-left:3px solid var(--accent);}
+.edu-card.b2{border-left-color:var(--border2);}
+.edu-deg{font-family:var(--fh);font-size:17px;color:var(--ink);margin-bottom:4px;}
+.edu-inst{font-size:13px;color:var(--accent);margin-bottom:3px;}
+.edu-date{font-family:var(--fm);font-size:11px;color:var(--muted);margin-bottom:14px;}
+.edu-cw{font-size:12.5px;color:var(--muted);line-height:1.7;}
+
+/* ── CONTACT ──────────────────────────────────────────────────────────── */
+#contact{padding:80px 0;text-align:center;}
+.contact-title{font-family:var(--fh);font-size:clamp(26px,4vw,44px);
+               color:var(--ink);margin-bottom:12px;}
+.contact-sub{font-size:14px;color:var(--muted);max-width:480px;
+             margin:0 auto 36px;line-height:1.7;}
+.clinks{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.clink{font-family:var(--fm);font-size:12px;padding:10px 20px;
+       border:1.5px solid var(--border2);border-radius:8px;color:var(--ink2);
+       text-decoration:none;transition:all .2s;}
+.clink:hover{border-color:var(--accent);color:var(--accent);}
+.visa{margin-top:28px;font-family:var(--fm);font-size:11px;
+      color:var(--muted);letter-spacing:.06em;}
+
+/* ── PUBLISH GUIDE ────────────────────────────────────────────────────── */
+#publish{padding:80px 0;background:var(--surface);
+         border-top:1px solid var(--border);}
+.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.guide-card{background:var(--bg);border:1px solid var(--border);
+            border-radius:14px;padding:28px;}
+.guide-num{font-family:var(--fh);font-size:48px;color:var(--border2);
+           line-height:1;margin-bottom:12px;}
+.guide-name{font-family:var(--fb);font-size:17px;font-weight:600;
+            color:var(--ink);margin-bottom:6px;}
+.guide-badge{display:inline-block;font-family:var(--fm);font-size:10px;
+             padding:3px 10px;border-radius:20px;margin-bottom:14px;
+             background:var(--accent2bg);color:var(--accent2);
+             border:1px solid #9FCCBE;letter-spacing:.05em;}
+.guide-badge.fast{background:#FEF3E2;color:#B45309;border-color:#F6C677;}
+.guide-steps{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.guide-steps li{font-size:13.5px;color:var(--ink2);padding-left:20px;
+                position:relative;line-height:1.6;}
+.guide-steps li::before{content:counter(step);counter-increment:step;
+                          position:absolute;left:0;font-family:var(--fm);
+                          font-size:11px;color:var(--accent);font-weight:500;
+                          top:3px;}
+.guide-steps{counter-reset:step;}
+.code{background:var(--surface);border:1px solid var(--border);
+      border-radius:6px;padding:10px 14px;margin-top:12px;
+      font-family:var(--fm);font-size:12px;color:var(--ink2);
+      white-space:pre-wrap;line-height:1.6;}
+.guide-note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6;}
+
+footer{border-top:1px solid var(--border);padding:22px 6vw;text-align:center;}
+footer p{font-family:var(--fm);font-size:11px;color:var(--muted);}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+@media(max-width:760px){
+  .hero-grid,.pcard,.edu-grid,.guide-grid{grid-template-columns:1fr;}
+  .p-stats{flex-direction:row;flex-wrap:wrap;}
+  .sbox{flex:1;min-width:100px;}
+  .exp-card{grid-template-columns:1fr;}
+  .exp-date{text-align:left;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hstat.wide{grid-column:span 2;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">MVJ // AEROSPACE</span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#publish">Publish</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">M.S. Space Studies · Rice University · Houston TX · May 2026</div>
+        <h1 class="hero-name">Mounapriya<br><em>Venkatesan</em></h1>
+        <p class="hero-role">GNC · Trajectory Design · In-Space Propulsion<br>Autonomous Spacecraft Systems · FDIR</p>
+        <div class="hero-pills">
+          <span class="hpill">GMAT</span><span class="hpill">MATLAB</span><span class="hpill">Python</span>
+          <span class="hpill">STK</span><span class="hpill">Simulink</span><span class="hpill">RPA/NASA CEA</span>
+          <span class="hpill">Onshape</span><span class="hpill">FDIR</span><span class="hpill">LSTM</span>
+        </div>
+        <div class="hero-btns">
+          <a class="btn-fill" href="mailto:vjmounapriya@gmail.com">Get in touch</a>
+          <a class="btn-out" href="https://linkedin.com/in/mounapriyav" target="_blank">LinkedIn</a>
+          <a class="btn-out" href="https://github.com/Mounapriya-Venkatesan" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-stats">
+          <div class="hstat wide">
+            <div class="hstat-n hstat-accent">1,382 m/s</div>
+            <div class="hstat-l">Europa Clipper full ΔV budget · 49-flyby MEGA trajectory modeled in GMAT</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-n hstat-orange">315 s</div>
+            <div class="hstat-l">Lunar engine Isp · beats Apollo LMDE by 4 s</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-n hstat-green">0.91</div>
+            <div class="hstat-l">FDIR F1 score · 8 fault modes · LSTM classifier</div>
+          </div>
+          <div class="hstat wide">
+            <div class="hstat-n" style="color:var(--accent4);">64.0 m/s</div>
+            <div class="hstat-l">Phobos 90-day mission ΔV · 14.6 kg propellant · 2.92% mass fraction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- ══ PROJECTS ═══════════════════════════════════════════════════════════ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-eyebrow">All Work</div>
+    <h2 class="sec-title">Projects</h2>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+      <button class="fbtn active" onclick="filterProjects('all',this)">All (7)</button>
+      <button class="fbtn" onclick="filterProjects('gnc',this)">GNC & Trajectory</button>
+      <button class="fbtn" onclick="filterProjects('prop',this)">Propulsion</button>
+      <button class="fbtn" onclick="filterProjects('ai',this)">AI & Autonomy</button>
+      <button class="fbtn" onclick="filterProjects('adcs',this)">ADCS & Systems</button>
+    </div>
+
+    <div class="projects-list">
+
+      <!-- 1. Phobos -->
+      <div class="pcard gnc" data-cat="gnc">
+        <div>
+          <span class="p-sfpl">★ SFPL-Relevant · Chariot to the Moons of Mars · NASA PS3</span>
+          <div class="p-eyebrow">Formation GNC · Astrodynamics · Feb – Apr 2026</div>
+          <h3 class="p-title">Phobos Proximity Operations — Formation GNC Feasibility Study</h3>
+          <p class="p-sub">Independent Graduate Study · Rice University</p>
+          <p class="p-desc">Comprehensive feasibility analysis of sustained proximity operations around Phobos using Quasi-Satellite Orbits (QSOs) in the Mars–Phobos Hill frame — the orbit type used by JAXA's MMX mission. Phobos's sphere of influence (7.3 km) is smaller than its mean radius (11.3 km), making classical stable orbits impossible. This study derives QSO dynamics from Clohessy–Wiltshire equations, produces a full ΔV budget, and evaluates dual-spacecraft formation vs. single S/C architectures.</p>
+          <ul class="p-bullets">
+            <li>Identified QSO-30 (30 km amplitude) as optimal science orbit: 0.18 m/s/day SK, 18.7 km surface altitude, 7.65 h period — consistent with MMX mission baseline</li>
+            <li>Full 8-phase mission ΔV budget: 64.0 m/s → 14.6 kg propellant from 500 kg S/C (2.92% mass fraction)</li>
+            <li>Evaluated 3 hyperbolic flyby scenarios (e = 1.44–2.34, t_encounter = 69–222 min); dual formation (QSO-30 + QSO-50) recommended: 96% surface coverage vs. 42% flyby-only</li>
+            <li>Monte Carlo uncertainty analysis (N = 2,000, Phobos GM ±500 m³/s²): 15% contingency is 150× actual model uncertainty — identifies autonomous GNC as primary risk driver</li>
+            <li>Neural-network guidance augmentation identified as highest-value R&D direction, directly aligned with SFPL aerocapture GNC research</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag b">GMAT</span><span class="ptag b">Python</span><span class="ptag b">CW Dynamics</span>
+            <span class="ptag b">QSO</span><span class="ptag b">Formation Flight</span><span class="ptag b">Lambert Solvers</span>
+            <span class="ptag b">Monte Carlo</span><span class="ptag b">ΔV Budget</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n b">64.0 m/s</div><div class="sbox-l">total ΔV · 90-day mission</div></div>
+          <div class="sbox"><div class="sbox-n b">2.92%</div><div class="sbox-l">propellant mass fraction</div></div>
+          <div class="sbox"><div class="sbox-n b">96%</div><div class="sbox-l">surface coverage · dual S/C</div></div>
+          <div class="sbox"><div class="sbox-n b">2,000</div><div class="sbox-l">Monte Carlo draws</div></div>
+        </div>
+      </div>
+
+      <!-- 2. Europa Clipper -->
+      <div class="pcard gnc" data-cat="gnc">
+        <div>
+          <div class="p-eyebrow">Trajectory Design · Mission Analysis · Jan – May 2025</div>
+          <h3 class="p-title">Europa Clipper — Trajectory Design & Mission Analysis</h3>
+          <p class="p-sub">Graduate Project · Orbital Mechanics & Mission Design · Rice University</p>
+          <p class="p-desc">End-to-end trajectory model of NASA's Europa Clipper MEGA (Multiple Gravity-Assist) mission in GMAT — full ΔV budget, 49-flyby radiation-minimizing sequence, and science coverage optimization across anti-Jovian and sub-Jovian Europa campaigns.</p>
+          <ul class="p-bullets">
+            <li>Complete MEGA gravity-assist trajectory in GMAT: 1,382 m/s total ΔV (1,007 m/s for JOI), 49-flyby architecture</li>
+            <li>Analyzed COT inclination sequencing (≤20.1°), petal rotation, and Switch-Flip maneuvers to maximize coverage while holding TID ≤ 3.14 Mrad</li>
+            <li>Validated flyby geometry in Python/NumPy; produced full mission timeline and maneuver sequence report</li>
+            <li>Presented at formal multi-discipline mission review panel — methodology transferable to Phobos/Deimos proximity ops</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag b">GMAT</span><span class="ptag b">Python</span><span class="ptag b">Gravity Assist</span>
+            <span class="ptag b">ΔV Budget</span><span class="ptag b">Radiation Analysis</span><span class="ptag b">Mission Design</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n b">1,382 m/s</div><div class="sbox-l">total ΔV budget computed</div></div>
+          <div class="sbox"><div class="sbox-n b">49</div><div class="sbox-l">Europa flybys modeled</div></div>
+          <div class="sbox"><div class="sbox-n b">3.14 Mrad</div><div class="sbox-l">TID threshold maintained</div></div>
+        </div>
+      </div>
+
+      <!-- 3. Aerocapture GNC -->
+      <div class="pcard gnc" data-cat="gnc">
+        <div>
+          <span class="p-sfpl">★ SFPL-Relevant · Aerocapture GNC · Neural-Network Guidance</span>
+          <div class="p-eyebrow">GNC Simulation · Aerocapture · Aug – Dec 2025</div>
+          <h3 class="p-title">Aerocapture GNC Simulation — Mars Orbit Insertion via Atmospheric Pass</h3>
+          <p class="p-sub">Independent Study Project · Rice University</p>
+          <p class="p-desc">3-DOF aerocapture trajectory simulation in MATLAB for a 500 kg spacecraft performing a single-pass Mars atmospheric capture, targeting a 400 × 400 km circular parking orbit with bank-angle modulation guidance.</p>
+          <ul class="p-bullets">
+            <li>Implemented bank-angle modulation guidance law with numerical predictor-corrector logic; achieved apoapsis delivery accuracy within ±15 km under 3σ atmospheric density uncertainty</li>
+            <li>Parameterized Mars GRAM atmospheric density profiles; propagated Monte Carlo ensemble (n = 500) to characterize peak heating, peak g-load, and orbit insertion error</li>
+            <li>Results benchmarked against published aerocapture studies for Venus and Mars; identified neural-network guidance augmentation as next step — aligned with SFPL active research</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag b">MATLAB</span><span class="ptag b">Python</span><span class="ptag b">Aerocapture</span>
+            <span class="ptag b">Bank-Angle GNC</span><span class="ptag b">Monte Carlo</span><span class="ptag b">Mars GRAM</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n b">±15 km</div><div class="sbox-l">apoapsis accuracy · 3σ density uncertainty</div></div>
+          <div class="sbox"><div class="sbox-n b">500</div><div class="sbox-l">Monte Carlo trajectory runs</div></div>
+          <div class="sbox"><div class="sbox-n b">400 km</div><div class="sbox-l">target circular orbit altitude</div></div>
+        </div>
+      </div>
+
+      <!-- 4. Lunar Engine -->
+      <div class="pcard prop" data-cat="prop">
+        <div>
+          <div class="p-eyebrow">Propulsion · Thermal Analysis · CAD · Jan – May 2025</div>
+          <h3 class="p-title">30 kN MMH/NTO Bipropellant Lunar Descent Engine — Full System Design</h3>
+          <p class="p-sub">Graduate Capstone (MECH 590) · Rice University</p>
+          <p class="p-desc">Complete pressure-fed bipropellant engine design for a 1,200 kg lunar lander — from architecture trade study through thermal analysis to production-level 3D CAD. Isp achieved exceeds the Apollo LMDE benchmark.</p>
+          <ul class="p-bullets orange">
+            <li>Architecture trade study: mass budget, propellant selection, ΔV = 1,800 m/s descent analysis for 1,200 kg lander</li>
+            <li>Pintle injector sized in MATLAB (orifice geometry, momentum ratio, spray angle); cross-validated with RPA & NASA CEA → Isp = 315 s vacuum (+4 s vs. Apollo LMDE 311 s)</li>
+            <li>1D regenerative cooling thermal analysis: wall temperatures confirmed &lt;1,000 K at 1.4 MW/m² throat heat flux</li>
+            <li>Full 3D CAD assembly in Onshape — combustion chamber, pintle injector, bell nozzle, cooling jacket — with GD&T callouts</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag o">MATLAB</span><span class="ptag o">RPA</span><span class="ptag o">NASA CEA</span>
+            <span class="ptag o">Onshape</span><span class="ptag o">Thermal Analysis</span><span class="ptag o">Bipropellant</span><span class="ptag o">Pintle Injector</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n o">315 s</div><div class="sbox-l">Isp vacuum · beats Apollo LMDE by 4 s</div></div>
+          <div class="sbox"><div class="sbox-n o">30 kN</div><div class="sbox-l">thrust · 1,200 kg lander</div></div>
+          <div class="sbox"><div class="sbox-n o">&lt;1,000 K</div><div class="sbox-l">wall temp at 1.4 MW/m² throat</div></div>
+        </div>
+      </div>
+
+      <!-- 5. FDIR -->
+      <div class="pcard ai" data-cat="ai">
+        <div>
+          <div class="p-eyebrow">Autonomous Systems · ML · FDIR · Jan – Mar 2026</div>
+          <h3 class="p-title">Autonomous FDIR for Satellite Constellations</h3>
+          <p class="p-sub">Independent Research · Extension of Affekta LLC Internship · Rice University</p>
+          <p class="p-desc">Extended Affekta's spacecraft digital twin fault pipeline to a simulated 6-satellite Walker-Delta constellation, training and benchmarking ML classifiers for real-time isolation across 8 subsystem failure modes.</p>
+          <ul class="p-bullets green">
+            <li>Generated 3,200 synthetic fault events across 8 modes: sensor dropout, thruster anomaly, power failure, thermal exceedance, attitude loss, comms blackout, memory corruption, clock drift</li>
+            <li>Trained Random Forest, LSTM, and Isolation Forest on imbalanced telemetry; LSTM (seq=60, SMOTE) achieved F1 = 0.91 on held-out test set</li>
+            <li>Built real-time anomaly scoring dashboard in Python/Flask: per-satellite health state, anomaly probability time series, fault mode distribution</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag g">Python</span><span class="ptag g">LSTM</span><span class="ptag g">Random Forest</span>
+            <span class="ptag g">Flask</span><span class="ptag g">SMOTE</span><span class="ptag g">Walker-Delta</span><span class="ptag g">NASA-HDBK-1002</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n g">0.91</div><div class="sbox-l">F1 score · LSTM classifier</div></div>
+          <div class="sbox"><div class="sbox-n g">8</div><div class="sbox-l">subsystem fault modes</div></div>
+          <div class="sbox"><div class="sbox-n g">3,200</div><div class="sbox-l">synthetic fault events</div></div>
+        </div>
+      </div>
+
+      <!-- 6. CubeSat ADCS -->
+      <div class="pcard adcs" data-cat="adcs">
+        <div>
+          <div class="p-eyebrow">ADCS · GNC · Systems Design · Sep – Dec 2025</div>
+          <h3 class="p-title">3U CubeSat ADCS — Attitude Determination & Control Design Study</h3>
+          <p class="p-sub">Independent Graduate Project · Rice University</p>
+          <p class="p-desc">Complete ADCS architecture design for a 3U CubeSat Earth-observation mission in 500 km SSO: sensor suite selection, actuator sizing, PD controller implementation in MATLAB/Simulink, and full NASA CubeSat Launch Initiative-compliant trade study report.</p>
+          <ul class="p-bullets" style="--c:var(--accent4)">
+            <li style="padding-left:20px">Sensor suite: sun sensors + magnetometer + star tracker; actuators: 3× reaction wheels + 1 magnetorquer; pointing budget: ±0.1° (3σ)</li>
+            <li style="padding-left:20px">PD controller tuned in MATLAB/Simulink against inertia tensor; verified under gravity gradient, aerodynamic, and SRP disturbance torques</li>
+            <li style="padding-left:20px">Reaction wheel momentum saturation modeled; magnetorquer desaturation strategy validated over 98.6° inclination SSO (SGP4 propagated)</li>
+            <li style="padding-left:20px">Delivered full trade study with mass, power, and link budget implications per NASA CubeSat Launch Initiative format</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag v">MATLAB</span><span class="ptag v">Simulink</span><span class="ptag v">SGP4</span>
+            <span class="ptag v">PD Controller</span><span class="ptag v">Reaction Wheels</span><span class="ptag v">CubeSat</span><span class="ptag v">ADCS</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n v">±0.1°</div><div class="sbox-l">pointing accuracy (3σ)</div></div>
+          <div class="sbox"><div class="sbox-n v">500 km</div><div class="sbox-l">SSO · 98.6° inclination</div></div>
+          <div class="sbox"><div class="sbox-n v">3U</div><div class="sbox-l">CubeSat · NASA CSLI format</div></div>
+        </div>
+      </div>
+
+      <!-- 7. LBCS -->
+      <div class="pcard ai" data-cat="ai">
+        <div>
+          <span class="p-sfpl p-nasa">★ Demonstrated to NASA Human Health & Performance · April 2026</span>
+          <div class="p-eyebrow">Autonomous Ops · AI Backend · May 2025 – Mar 2026</div>
+          <h3 class="p-title">LBCS — Latency-Bridging Conversation System</h3>
+          <p class="p-sub">Graduate Research Project · Rice University · Earth–Mars Communication Prototype</p>
+          <p class="p-desc">Full-stack autonomous communication prototype simulating 48-minute Earth–Mars one-way signal latency — a proof-of-concept for autonomous onboard decision-making when real-time ground commanding is impossible.</p>
+          <ul class="p-bullets green">
+            <li>Python/Flask AI backend integrating Claude API for semantic message matching, phase-based session routing, and D-ID avatar rendering pipeline</li>
+            <li>Diagnosed and resolved 4 critical pipeline failures; achieved 100% session render rate across 31 communication clips</li>
+            <li>Demonstrated live to NASA Human Health & Performance directorate, April 2026</li>
+          </ul>
+          <div class="p-tags">
+            <span class="ptag g">Python</span><span class="ptag g">Flask</span><span class="ptag g">Claude API</span>
+            <span class="ptag g">D-ID</span><span class="ptag g">Autonomous Ops</span><span class="ptag g">REST API</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="sbox"><div class="sbox-n g">48 min</div><div class="sbox-l">Mars latency simulated</div></div>
+          <div class="sbox"><div class="sbox-n g">100%</div><div class="sbox-l">render rate · 31 clips</div></div>
+          <div class="sbox"><div class="sbox-n g">NASA</div><div class="sbox-l">H&P demonstrated · Apr 2026</div></div>
+        </div>
+      </div>
+
+    </div><!-- /projects-list -->
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- ══ SKILLS ═════════════════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-eyebrow">Capabilities</div>
+    <h2 class="sec-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="sg">
+        <div class="sg-icon">🛰️</div>
+        <div class="sg-title">GNC & Astrodynamics</div>
+        <div class="sg-chips">
+          <span class="chip">GMAT</span><span class="chip">MATLAB/Simulink</span><span class="chip">STK</span>
+          <span class="chip">CW Dynamics</span><span class="chip">QSO Design</span><span class="chip">ΔV Budgeting</span>
+          <span class="chip">Lambert Solvers</span><span class="chip">SGP4</span><span class="chip">Formation Flight</span>
+          <span class="chip">Bank-angle GNC</span><span class="chip">Predictor-Corrector</span>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-icon">🔥</div>
+        <div class="sg-title">Propulsion</div>
+        <div class="sg-chips">
+          <span class="chip">MMH/NTO Bipropellant</span><span class="chip">Pintle Injector</span>
+          <span class="chip">RPA</span><span class="chip">NASA CEA</span><span class="chip">Regen. Cooling</span>
+          <span class="chip">Isp Optimization</span><span class="chip">Nozzle Design</span><span class="chip">Thermal Analysis</span>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-icon">🤖</div>
+        <div class="sg-title">AI & Autonomous Systems</div>
+        <div class="sg-chips">
+          <span class="chip">LSTM</span><span class="chip">Random Forest</span><span class="chip">PCA+SVM</span>
+          <span class="chip">Autoencoders</span><span class="chip">Kalman Filters</span><span class="chip">FDIR Design</span>
+          <span class="chip">Digital Twins</span><span class="chip">Scikit-learn</span><span class="chip">Claude API</span>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-icon">💻</div>
+        <div class="sg-title">Programming</div>
+        <div class="sg-chips">
+          <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">Bash</span>
+          <span class="chip">Flask</span><span class="chip">NumPy</span><span class="chip">Pandas</span>
+          <span class="chip">Matplotlib</span><span class="chip">SciPy</span><span class="chip">Astropy</span><span class="chip">C++ (familiar)</span>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-icon">🔧</div>
+        <div class="sg-title">CAD & Fabrication</div>
+        <div class="sg-chips">
+          <span class="chip">Onshape</span><span class="chip">SolidWorks</span><span class="chip">Fusion 360</span>
+          <span class="chip">3D Printing</span><span class="chip">CNC Machining</span><span class="chip">Laser Cutting</span>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-icon">📡</div>
+        <div class="sg-title">Spacecraft Systems</div>
+        <div class="sg-chips">
+          <span class="chip">ADCS Design</span><span class="chip">CubeSat Integration</span>
+          <span class="chip">NASA/ECSS Compliance</span><span class="chip">Walker-Delta</span>
+          <span class="chip">HST/JWST Data</span><span class="chip">Flight Readiness</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ═════════════════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-eyebrow">Industry</div>
+    <h2 class="sec-title">Professional Experience</h2>
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Space Systems Engineer Intern</div>
+        <div class="exp-org">Affekta LLC — AI-Enabled Autonomous Systems · Remote</div>
+        <ul class="exp-li">
+          <li>Designed 6-step synthetic fault data generation methodology for spacecraft digital twins across 11 satellite telemetry datasets spanning 17+ years of in-flight data — adopted as Affekta's standard pipeline across all projects</li>
+          <li>Benchmarked PCA+SVM, Autoencoders, and Kalman filters against NASA-HDBK-1002 and ECSS standards; report directly guided FDIR architecture decisions for next-generation satellite operations</li>
+          <li>Presented findings to senior technical staff; interfaced across engineering, AI, and product teams</li>
+        </ul>
+      </div>
+      <div class="exp-date">Oct – Dec 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ═══════════════════════════════════════════════════════════ -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-eyebrow">Academic Background</div>
+    <h2 class="sec-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-deg">M.S. Space Studies</div>
+        <div class="edu-inst">Rice University · Houston, TX</div>
+        <div style="font-size:12px;color:var(--accent2);margin-bottom:4px;">Aerospace Engineering Authorization</div>
+        <div class="edu-date">May 2026</div>
+        <div class="edu-cw">Aerospace Propulsion · Orbital Mechanics & Mission Design · Solar Physics & Astrophysics · Design for Aerospace Environments · Fabrication & Prototyping · AI-Integrated Project Management</div>
+      </div>
+      <div class="edu-card b2">
+        <div class="edu-deg">B.Tech — Physics, Mathematics & CS</div>
+        <div class="edu-inst">Bengaluru North University — Christ College · India</div>
+        <div class="edu-date">Oct 2023</div>
+        <div class="edu-cw">Classical & Modern Physics · Spectral Theory · Statistical Analysis · Optics · Thermodynamics · Scientific Computing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PUBLISH GUIDE ═══════════════════════════════════════════════════════ -->
+<section id="publish">
+  <div class="wrap">
+    <div class="sec-eyebrow">Share Your Portfolio</div>
+    <h2 class="sec-title">How to publish this online</h2>
+    <div class="guide-grid">
+
+      <!-- GitHub Pages -->
+      <div class="guide-card">
+        <div class="guide-num">01</div>
+        <div class="guide-name">GitHub Pages</div>
+        <div class="guide-badge">Free · Professional · Permanent URL</div>
+        <ol class="guide-steps">
+          <li>Go to <strong>github.com</strong> → Sign up or log in (use your name: mounapriyav)</li>
+          <li>Click <strong>New repository</strong> → name it exactly: <strong>mounapriyav.github.io</strong></li>
+          <li>Set visibility to <strong>Public</strong> → click Create repository</li>
+          <li>Click <strong>uploading an existing file</strong> → drag your <strong>Mounapriya_Portfolio.html</strong> file in</li>
+          <li>Rename the file to <strong>index.html</strong> before uploading (or rename after by clicking the file → pencil icon)</li>
+          <li>Click <strong>Commit changes</strong></li>
+          <li>Go to Settings → Pages → Source: <strong>Deploy from branch → main → / (root)</strong> → Save</li>
+          <li>Wait 2 minutes → your site is live at <strong>mounapriyav.github.io</strong></li>
+        </ol>
+        <div class="code">Your URL: https://mounapriyav.github.io</div>
+        <div class="guide-note">💡 This URL looks the most professional when sharing with professors. Put it in your email signature and CV.</div>
+      </div>
+
+      <!-- Netlify Drop -->
+      <div class="guide-card">
+        <div class="guide-num">02</div>
+        <div class="guide-name">Netlify Drop</div>
+        <div class="guide-badge fast">Fastest · 30 seconds · No account needed</div>
+        <ol class="guide-steps">
+          <li>Go to <strong>netlify.com/drop</strong> in your browser</li>
+          <li>Drag and drop your <strong>Mounapriya_Portfolio.html</strong> file onto the page</li>
+          <li>Netlify instantly gives you a live URL like <strong>random-name-123.netlify.app</strong></li>
+          <li>To get a custom URL: sign up free → go to Site settings → Change site name → type <strong>mounapriya-aerospace</strong></li>
+          <li>Your new URL: <strong>mounapriya-aerospace.netlify.app</strong></li>
+          <li>To update later: just drag the new file onto the same page</li>
+        </ol>
+        <div class="code">Your URL: https://mounapriya-aerospace.netlify.app</div>
+        <div class="guide-note">💡 Best if you want it online in 30 seconds right now. You can always move to GitHub Pages later for a cleaner URL.</div>
+      </div>
+
+      <!-- Vercel -->
+      <div class="guide-card">
+        <div class="guide-num">03</div>
+        <div class="guide-name">Vercel</div>
+        <div class="guide-badge">Free · Clean URL · Links to GitHub</div>
+        <ol class="guide-steps">
+          <li>Go to <strong>vercel.com</strong> → Sign up with your GitHub account</li>
+          <li>Click <strong>Add New → Project</strong></li>
+          <li>Import your GitHub repo (the mounapriyav.github.io one from Option 1)</li>
+          <li>Vercel auto-detects it's a static site → click <strong>Deploy</strong></li>
+          <li>Your site is live at <strong>mounapriyav.vercel.app</strong></li>
+          <li>Every time you update the file on GitHub, Vercel auto-redeploys in 30 seconds</li>
+        </ol>
+        <div class="code">Your URL: https://mounapriyav.vercel.app</div>
+        <div class="guide-note">💡 Best if you want automatic updates — push to GitHub, site updates instantly. Good long-term workflow.</div>
+      </div>
+
+      <!-- What to do after publishing -->
+      <div class="guide-card" style="border:2px solid var(--accent);background:var(--accentbg);">
+        <div class="guide-num" style="color:var(--accent);">✓</div>
+        <div class="guide-name">After you publish — checklist</div>
+        <div class="guide-badge">Do these 5 things</div>
+        <ol class="guide-steps">
+          <li>Add the URL to your <strong>CV</strong> next to your name at the top</li>
+          <li>Add the URL to your <strong>LinkedIn profile</strong> → Edit → Contact info → Website</li>
+          <li>Add one line to your cold email to Prof. Alexeenko: <em>"Full project details: mounapriyav.github.io"</em></li>
+          <li>Add the URL to your <strong>email signature</strong> in Gmail</li>
+          <li>Test the link on your phone to make sure it looks good on mobile</li>
+        </ol>
+        <div class="code">Subject line tip:
+"RA Inquiry — GNC & Aerocapture | Rice M.S.
+Portfolio: mounapriyav.github.io"</div>
+        <div class="guide-note">A professor who clicks your link and sees the Phobos project in the first 5 seconds is 3× more likely to reply.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="contact-title">Open to research assistantships</h2>
+    <p class="contact-sub">Interested in GNC, trajectory design, aerocapture, and autonomous spacecraft systems. F-1 STEM OPT authorized — no sponsorship required.</p>
+    <div class="clinks">
+      <a class="clink" href="mailto:vjmounapriya@gmail.com">vjmounapriya@gmail.com</a>
+      <a class="clink" href="https://linkedin.com/in/mounapriyav" target="_blank">LinkedIn</a>
+      <a class="clink" href="https://github.com/Mounapriya-Venkatesan" target="_blank">GitHub</a>
+      <a class="clink" href="tel:3466282059">(346) 628-2059</a>
+    </div>
+    <p class="visa">F-1 · STEM OPT · 3-year extension eligible · Houston TX · Available immediately</p>
+  </div>
+</section>
+
+<footer>
+  <p>Mounapriya Venkatesan Jayasankari · M.S. Space Studies · Rice University · 2026 · vjmounapriya@gmail.com</p>
+</footer>
+
+<script>
+// ── Filter projects ────────────────────────────────────────────────────────
+function filterProjects(cat, btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pcard').forEach(card=>{
+    if(cat==='all' || card.dataset.cat===cat){
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+// ── Scroll fade-in ─────────────────────────────────────────────────────────
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.06});
+
+document.querySelectorAll('.pcard,.sg,.exp-card,.edu-card,.guide-card,.hstat').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='opacity 0.55s ease, transform 0.55s ease';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
